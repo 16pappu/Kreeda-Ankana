@@ -1,0 +1,118 @@
+KREEDA-ANKANA
+Product Requirements Document (PRD) v1.0
+Ground & Match Organizer for Village Communities
+1. PROBLEM STATEMENT
+In rural and semi-urban areas, sports grounds are vital community hubs. However, they
+suffer from "Ground Monopolization" and "Coordination Gaps."
+Current Pain Points: Informal "first-come, first-served" rules lead to conflicts;
+smaller or visiting teams cannot find available slots; and match results are lost to
+word-of-mouth.
+Target Users: Village youth, sports club captains, and local ground administrators
+(Panchayat members).
+2. VISION AND GOALS
+To digitize the village "Notice Board," transforming unorganized play into a structured
+sports culture that builds community harmony.
+Success Metrics
+Primary: 0% double-booking conflicts; Monthly Active Teams (MAT).
+Secondary: Challenge Response Rate (number of matches organized via the app);
+Average app session duration.
+3. USERS, ROLES, AND SCENARIOS
+Role Profile Primary Scenario
+• 
+• 
+• 
+• 
+1
+Team
+Captain
+Lead of a local Cricket/
+Volleyball team.
+Checks the calendar at 10 AM, sees a free slot at 5 PM,
+and books it for his team.
+Challenger Team looking for new
+opponents.
+Posts a public "Open Challenge" for Sunday morning to
+invite teams from neighboring villages.
+Ground
+Admin
+Village authority/
+Volunteer.
+Updates ground status (e.g., "Ground closed for
+maintenance due to rain").
+4. FEATURES AND REQUIREMENTS
+4.1 Ground Calendar & Slot Booking
+Grid-based View: Visual representation of 1-hour blocks (6 AM to 8 PM).
+Conflict Prevention: Atomic transaction logic; if Team A initiates a booking for 4
+PM, that slot is locked for others until the transaction completes or expires.
+Validation: Users cannot book more than 2 hours per day to prevent hoarding.
+4.2 Challenge Board
+Real-time Updates: Instant push via Firebase when a new challenge is posted.
+Reply Threading: Interested teams can "Comment" or "Accept" the challenge
+directly within the post.
+4.3 Score Wall
+Social Proof: A feed showing "Team A beat Team B (21-18, 21-15)".
+Persistence: Scores are saved locally via Room and synced to the cloud when
+online.
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+2
+5. USER FLOWS AND WIREFRAMES
+Booking Flow
+Home -> Select Date -> Tap Empty Slot -> Enter Team Name -> Confirm -> Slot turns Red
+(Occupied).
+Wireframe Note: Use a high-contrast Grid. Occupied slots should show the Team
+Logo/Name. The 'Book' button should be a floating action button (FAB) with a sporty
+icon. 
+6. TECHNICAL ARCHITECTURE
+Frontend: Kotlin with Jetpack Compose (Declarative UI). MVI (Model-View-Intent)
+for state management.
+Backend:
+Firebase Realtime DB: Low-latency data for the Challenge Board.
+Firestore: Structured data for Team Profiles and Historical Scores.
+Local Persistence:Room DB acting as the Single Source of Truth for the UI.
+Security: Firebase Phone Auth (OTP) to ensure accountability.
+7. DATA MODEL (SAMPLE SCHEMA)
+Entity: Booking
+{
+  bookingId: String (PK),
+  groundId: String (FK),
+  teamId: String,
+  startTime: Long (Timestamp),
+  endTime: Long (Timestamp),
+  status: "CONFIRMED" | "CANCELLED"
+}
+• 
+• 
+◦ 
+◦ 
+• 
+• 
+3
+8. MILESTONES AND PHASES
+Phase 1: MVP (Weeks 1-4)
+Core Calendar and Slot Booking logic.
+Basic Firebase integration.
+Static Score Wall.
+Phase 2: Social & Growth (Weeks 5-8)
+Real-time Challenge Board replies.
+Push notifications for match reminders.
+Automated "Team Leaderboards."
+9. RISK ASSESSMENT
+Technical: Connectivity issues in deep rural areas. Mitigation: Robust Room DB
+offline-first implementation.
+Adoption: Dominance by one powerful group. Mitigation: Admin "Super-User" role to
+moderate bookings.
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+4

@@ -1,0 +1,61 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isSignedIn() { return request.auth != null; }
+    function isOwner(uid) { return isSignedIn() && request.auth.uid == uid; }
+
+    match /users/{uid} {
+      allow read: if isSignedIn();
+      allow create: if isOwner(uid);
+      allow update: if isOwner(uid);
+      allow delete: if false;
+    }
+
+    match /grounds/{groundId} {
+      allow read: if true;
+      allow create, update, delete: if isSignedIn()
+        && request.auth.token.role == "manager";
+    }
+
+    match /grounds/{groundId}/slots/{slotId} {
+      allow read: if true;
+      allow create, update, delete: if isSignedIn()
+        && request.auth.token.role in ["manager", "admin"];
+    }
+
+    match /bookings/{bookingId} {
+      allow read: if isSignedIn();
+      allow create: if isSignedIn()
+        && request.resource.data.userUid == request.auth.uid;
+      allow update: if isSignedIn()
+        && resource.data.userUid == request.auth.uid;
+      allow delete: if false;
+    }
+
+    match /challenges/{challengeId} {
+      allow read: if true;
+      allow create: if isSignedIn()
+        && request.resource.data.authorUid == request.auth.uid;
+      allow update: if isSignedIn()
+        && resource.data.authorUid == request.auth.uid;
+      allow delete: if isSignedIn()
+        && resource.data.authorUid == request.auth.uid;
+
+      match /replies/{replyId} {
+        allow read: if true;
+        allow create: if isSignedIn()
+          && request.resource.data.authorUid == request.auth.uid;
+        allow update, delete: if isSignedIn()
+          && resource.data.authorUid == request.auth.uid;
+      }
+    }
+
+    match /scores/{scoreId} {
+      allow read: if true;
+      allow create: if isSignedIn()
+        && request.resource.data.authorUid == request.auth.uid;
+      allow update, delete: if isSignedIn()
+        && resource.data.authorUid == request.auth.uid;
+    }
+  }
+}
