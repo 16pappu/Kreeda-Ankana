@@ -52,22 +52,31 @@ Open the project in Android Studio (Arctic Fox or newer)
 Add your Firebase google-services.json under:
 
 app/src/main/
+
 Enable:
 Firestore
 Authentication
 Firebase Storage
 Build & run the app on an Android device/emulator
+
 🛡️ Security
 Firestore rules for booking protection
 Validation to prevent double booking
 Auth-based access control
 Local data encryption (optional)
-MVVM + Clean Architecture📊 Key Modules
+MVVM + Clean Architecture
+
+📊 Key Modules
 Grounds Module → list, calendar view, bookings
+
 Challenges Module → posts, replies
+
 Scores Module → match results
+
 Auth Module → login, profile
+
 Sync Module → Firestore ↔ Room sync
+
 🚀 How to Run the Project
 
 Clone the repository:
