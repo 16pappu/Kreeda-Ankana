@@ -9,19 +9,19 @@ View all local playgrounds
 Check availability in a calendar view
 Book time slots with conflict-free transactions
 Offline support with automatic sync
-🔹 2. Challenge Board
+🔹 2. Challenge Board //
 Post match challenges
 Reply to challenges in real-time
 Community-driven interaction using Firebase listeners
-🔹 3. Score Wall
+🔹 3. Score Wall //
 Publish match results
 View historical match scores
 Simple, clean interface for quick updates
-🔹 4. Authentication
+🔹 4. Authentication //
 Email login
 Anonymous guest access
 Basic user profile
-🔹 5. Offline-First Experience
+🔹 5. Offline-First Experience //
 Uses Room database for local caching
 Syncs automatically when network is available
 Works smoothly in low-connectivity rural areas🏛️ Tech Stack
