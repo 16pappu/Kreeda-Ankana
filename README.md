@@ -1,38 +1,97 @@
-# Kreeda-Ankana (Android)
+📱 Kreeda-Ankana
+Village Sports Ground & Match Organizer (Android App)
 
-Offline-first Sports Ground and Match Organizer for villages.
+Kreeda-Ankana is an Android application designed to help village sports communities easily book playgrounds, organize matches, post challenges, and record match scores — with full offline support and real-time synchronization.
 
-## Tech Stack
+🌟 Features
+🔹 1. Ground Booking & Slot Management
+View all local playgrounds
+Check availability in a calendar view
+Book time slots with conflict-free transactions
+Offline support with automatic sync
+🔹 2. Challenge Board
+Post match challenges
+Reply to challenges in real-time
+Community-driven interaction using Firebase listeners
+🔹 3. Score Wall
+Publish match results
+View historical match scores
+Simple, clean interface for quick updates
+🔹 4. Authentication
+Email login
+Anonymous guest access
+Basic user profile
+🔹 5. Offline-First Experience
+Uses Room database for local caching
+Syncs automatically when network is available
+Works smoothly in low-connectivity rural areas🏛️ Tech Stack
+Kotlin (Android)
+Firebase Firestore – real-time database
+Firebase Auth – authentication
+Firebase Storage – media uploads
+Room Database – offline caching
+Hilt – dependency injection
+Coroutines / Flow – async operations📊 Key Modules
+Grounds Module → list, calendar view, bookings
+Challenges Module → posts, replies
+Scores Module → match results
+Auth Module → login, profile
+Sync Module → Firestore ↔ Room sync
+🚀 How to Run the Project
 
-- Kotlin + Jetpack Compose
-- Clean Architecture + MVVM + Repository pattern
-- Room for offline cache
-- Firebase Auth + Firestore for cloud sync
-- Hilt for dependency injection
+Clone the repository:
 
-## Modules
+git clone https://github.com/your-username/kreeda-ankana.git
+Open the project in Android Studio (Arctic Fox or newer)
 
-- `app`
-- `core:common`, `core:model`, `core:database`, `core:network`, `core:data`
-- `feature:auth`, `feature:grounds`, `feature:booking`, `feature:challenges`, `feature:scores`, `feature:profile`
+Add your Firebase google-services.json under:
 
-## Setup
+app/src/main/
+Enable:
+Firestore
+Authentication
+Firebase Storage
+Build & run the app on an Android device/emulator
+🛡️ Security
+Firestore rules for booking protection
+Validation to prevent double booking
+Auth-based access control
+Local data encryption (optional)
+MVVM + Clean Architecture📊 Key Modules
+Grounds Module → list, calendar view, bookings
+Challenges Module → posts, replies
+Scores Module → match results
+Auth Module → login, profile
+Sync Module → Firestore ↔ Room sync
+🚀 How to Run the Project
 
-1. Open project in Android Studio (Giraffe+ recommended).
-2. Add Firebase Android app and place `google-services.json` inside `app/`.
-3. Enable Firebase Auth (Email/Password + Anonymous) and Firestore.
-4. Sync Gradle and run on device/emulator.
+Clone the repository:
 
-## Starter Scope Included
+git clone https://github.com/your-username/kreeda-ankana.git
+Open the project in Android Studio (Arctic Fox or newer)
 
-- Modular architecture skeleton
-- Booking entity + DAO + repository + Firestore transaction sample
-- Hilt app setup + dependency modules
-- Basic Compose launch screen and sample booking trigger
+Add your Firebase google-services.json under:
 
-## Next Implementation Steps
+app/src/main/
+Enable:
+Firestore
+Authentication
+Firebase Storage
+Build & run the app on an Android device/emulator
+🛡️ Security
+Firestore rules for booking protection
+Validation to prevent double booking
+Auth-based access control🙌 Contributing
 
-1. Add full DAOs/repositories for grounds, challenges, replies, scores, profiles.
-2. Add WorkManager sync queue and conflict resolution states.
-3. Add Navigation graph and feature screens.
-4. Add unit, integration, and UI tests from the roadmap.
+Pull requests are welcome!
+If you'd like to contribute features or improvements, feel free to open an issue.
+
+📜 License
+
+This project is licensed under the MIT License.
+
+💬 Author
+
+Prajwal Naik
+Final-year CSE Student
+Android Developer | AI Enthusiast
